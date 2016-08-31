@@ -18,22 +18,21 @@ var bio = {
 	"biopic":"img.jpg",
 	"welcomeMessage":"WELCOME!",
 	"skills":["awesomeness","programming","teaching","js"]
-}
+};
 
 var work = {
 	"jobs": [{
 		"employer": "Eyemovic",
 		"title": "Website operation staff",
-		"location": "Ehime, Japan",
-		"datesWorked": "August 2013 - present",
+		"dates": "August 2013 - present",
 		"description": "Design and markup customers’ websites.  In charge of updating websites(hotel, gymnastics organization etc)."
 	}, {
 		"employer": "Terakoya group",
 		"title": "Instructor",
-		"location": "Ehime, Japan",
-		"datesWorked": "2007-2012",
+		"dates": "2007-2012",
 		"description": "taught 6 - 18 years kids"
-	}]
+	}
+	]
 }
 
 var projects = {
@@ -48,7 +47,7 @@ var projects = {
 		"description": "Landing page built to sell the styling spirits through affiliate links.",
 		"images": "img.jpg"
 	}]
-}
+};
 
 var education = {
 	"schools": [{
@@ -71,7 +70,7 @@ var education = {
 		"URL": "https://www.udacity.com/"
 	}
 	]
-}
+};
 
 if(bio.skills.length > 0){
 	$("#header").append(HTMLskillsStart);
@@ -83,24 +82,28 @@ if(bio.skills.length > 0){
 	$("#skills").append(formattedSkill);
 	var formattedSkill = HTMLskills.replace("%data%",bio.skills[3]);
 	$("#skills").append(formattedSkill);
-}
-
-var cameron = {};
-cameron.job = "course dev";
-var makeCourse = function(){
-	console.log("Made a course");
 };
 
-var courses = 0;
-while(cameron.job === "course dev"){
-	makeCourse();
-	courses = courses + 1;
-	if(courses === 10){
-		cameron.job = "learning specialist";
-	}
+for(job in work.jobs){
+	$("#workExperience").append(HTMLworkStart);
+	var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
+	var formattedEmployerTitle = formattedEmployer + formattedTitle;
+	$(".work-entry:last").append(formattedEmployerTitle);
 }
-console.log(cameron.job);
 
-for(var i=0; i < 9;i++){
-	console.log(i);
+for(job in work.jobs){
+	$("#workExperience").append(HTMLworkStart);
+	var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
+	var formattedEmployerTitle = formattedEmployer + formattedTitle;
+	$(".work-entry:last").append(formattedEmployerTitle);
 }
+
+myObj = {'country1':'Germany', 'country2':'Argentina'};
+for (key in work.jobs){
+    if (work.jobs.hasOwnProperty(key)) {
+        console.log(work.jobs[key]);
+    }
+}
+
