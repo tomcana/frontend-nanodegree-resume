@@ -15,7 +15,7 @@ var bio = {
 		"github":"tomcana",
 		"location":"Matsuyama city,Ehime Japan"
 	},
-	"biopic":"img.jpg",
+	"biopic":"../images/profile_pic.jpg",
 	"welcomeMessage":"WELCOME!",
 	"skills":["awesomeness","programming","teaching","js"]
 };
@@ -33,7 +33,7 @@ var work = {
 		"description": "taught 6 - 18 years kids"
 	}
 	]
-}
+};
 
 var projects = {
 	"projects": [{
@@ -52,13 +52,13 @@ var projects = {
 var education = {
 	"schools": [{
 		"name": "Conestoga College",
-		"city": "Kitchener,ON,Canada",
+		"location": "Kitchener,ON,Canada",
 		"major": "General Business",
 		"YearofGraducation": "2007",
 		"URL": "http://www.conestogac.on.ca/index.jsp"
 	}, {
 		"name": "Japan College of Foreigh Languages",
-		"city": "Tokyo,Japan",
+		"location": "Tokyo,Japan",
 		"major": "Canada",
 		"YearofGraducation": "2004",
 		"URL": "http://www.jcfl.ac.jp/"
@@ -84,26 +84,89 @@ if(bio.skills.length > 0){
 	$("#skills").append(formattedSkill);
 };
 
+function displaywork(){
 for(job in work.jobs){
 	$("#workExperience").append(HTMLworkStart);
 	var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
 	var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
 	var formattedEmployerTitle = formattedEmployer + formattedTitle;
 	$(".work-entry:last").append(formattedEmployerTitle);
+	
+	var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].dates);
+	$(".work-entry:last").append(formattedDates);
+	
+	var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[job].description);
+	$(".work-entry:last").append(formattedDescription);
+	
 }
+};
 
-for(job in work.jobs){
-	$("#workExperience").append(HTMLworkStart);
-	var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
-	var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
-	var formattedEmployerTitle = formattedEmployer + formattedTitle;
-	$(".work-entry:last").append(formattedEmployerTitle);
-}
+displaywork();
 
-myObj = {'country1':'Germany', 'country2':'Argentina'};
-for (key in work.jobs){
-    if (work.jobs.hasOwnProperty(key)) {
-        console.log(work.jobs[key]);
+$(document).click(function(loc){
+	var x = loc.pageX;
+	var y = loc.pageX;
+
+	logClicks(x,y);
+});
+
+function locationizer(work_obj) {
+     var locationArray = [];
+    for (job in work_obj.jobs){
+       var newLocation = work_obj.jobs[job].location;
+       locationArray.push(newLocation);
     }
+    return locationArray;
 }
+
+
+// Did locationizer() work? This line will tell you!
+console.log(locationizer(work));
+
+// $(internationalizeButton).click(function inName(){
+//      var currentname = bio.name;
+// 	var names = currentname.split(" ");
+// 	names[1] = names[1].toUpperCase();
+// 	var internationalname = HTMLheaderName.replace("%data%",internationalname);
+// });
+
+
+
+function inName(name){
+	name = name.trim().split(" ");
+	console.log(name);
+    names[1] = names[1].toUpperCase();
+    names[0] = names[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase();
+	return name[0] + " " + name[1];
+};
+
+$("#main").append(internationalizeButton);
+
+projects.display = function(){
+	for(project in projects.projects){
+	$("#projects").append(HTMLprojectStart);
+
+	var formattedTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
+	$(".project-entry:last").append(formattedTitle);
+
+	var formattedDates = HTMLprojectDates.replace("%data%",projects.projects[project].dates);
+	$(".project-entry:last").append(formattedDates);
+
+	var formattedDescription = HTMLprojectDescription.replace("%data%",projects.projects[project].description);
+	$(".project-entry:last").append(formattedDescription);
+
+	if(projects.projects[project].images.length > 0){
+		for (image in projects.projects[project].images){
+			var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[project].images[image]);
+			$(".project-entry:last").append(formattedImage);
+		}
+	}
+}
+
+}
+projects.display(); // This executes the above function
+
+//you want to see a map? here's a map.
+$("#mapDiv").append(googleMap);
+
 
