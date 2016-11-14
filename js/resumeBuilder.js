@@ -1,5 +1,4 @@
 var formattedName = HTMLheaderName.replace("%data%","Tomomi Shiba");
-
 var role ="Web Developer";
 var formattedRole = HTMLheaderRole.replace("%data%",role);
 $("#header").prepend(formattedRole);
@@ -15,7 +14,7 @@ var bio = {
 		"github":"tomcana",
 		"location":"Matsuyama city,Ehime Japan"
 	},
-	"biopic":"../images/profile_pic.jpg",
+	"biopic":"./images/profile_pic.jpg",
 	"welcomeMessage":"WELCOME!",
 	"skills":["awesomeness","programming","teaching","js"]
 };
@@ -71,6 +70,9 @@ var education = {
 	}
 	]
 };
+
+var mybiopic = HTMLbioPic.replace("%data%",bio.biopic);
+$("#header").prepend(mybiopic);
 
 if(bio.skills.length > 0){
 	$("#header").append(HTMLskillsStart);
