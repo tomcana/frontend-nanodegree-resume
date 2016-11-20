@@ -20,7 +20,6 @@ var bio = {
 };
 
 function displaycontact(){
-for(contact in bio.contacts){
 	var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
 	var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
 	var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
@@ -28,8 +27,6 @@ for(contact in bio.contacts){
 	var formattedBlog = HTMLblog.replace("%data%",bio.contacts.blog);
 	var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
 	$("#topContacts, #footerContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedLocation); //joint jQuery feature to add contacts to header and footer
-
-}
 };
 
 displaycontact();
