@@ -15,7 +15,7 @@ var bio = {
 		"location":"Matsuyama city,Ehime Japan"
 	},
 	"biopic":"./images/profile_pic.jpg",
-	"welcomeMessage":"WELCOME!",
+	"welcomeMessage":"welcome to my online resume!",
 	"skills":["awesomeness","programming","teaching","js"]
 };
 
@@ -74,8 +74,9 @@ var education = {
 };
 
 var mybiopic = HTMLbioPic.replace("%data%",bio.biopic);
-$("#header").prepend(mybiopic);
-
+$("#header").append(mybiopic);
+var mymsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+$("#header").append(mymsg);
 
 
 if(bio.skills.length > 0){

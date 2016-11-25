@@ -138,7 +138,7 @@ a {
 .flex-box {
   display: -webkit-flex;
   display: flex;
-  flex-direction: row;
+  flex-direction: columß;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
