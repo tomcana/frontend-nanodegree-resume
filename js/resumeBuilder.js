@@ -47,13 +47,15 @@ var work = {
         "title": "Website operation staff",
         "dates": "August 2013 - present",
         "description": "Design and markup customers’ websites.  In charge of updating websites(hotel, gymnastics organization etc).",
-        "location": "Matsuyama,Ehime,Japan"
+        "location": "Matsuyama,Ehime,Japan",
+        "url": "https://www.google.com"
     }, {
         "employer": "Terakoya group",
         "title": "Instructor",
         "dates": "2007-2012",
         "description": "taught 6 - 18 years kids",
-        "location": "Matsuyama,Ehime,Japan"
+        "location": "Matsuyama,Ehime,Japan",
+        "url": "https://www.yahoo.com"
     }]
 };
 
@@ -61,14 +63,15 @@ work.display = function() {
     work.jobs.forEach(function(job) {
         $("#workExperience").append(HTMLworkStart);
         var formattedEmployer = HTMLworkEmployer.replace(data, job.employer);
-        var formattedTitle = HTMLworkTitle.replace(data, job.title);
-        var formattedEmployerTitle = formattedEmployer + formattedTitle;
-        $(".work-entry:last").append(formattedEmployerTitle);
-
+        var formattedTitleLink = formattedEmployer.replace("#", job.url);
+        var formattedWorkTitle = HTMLworkTitle.replace(data, job.title);
+        var formattedEmployerTitle = formattedTitleLink + formattedWorkTitle;
         var formattedDates = HTMLworkDates.replace(data, job.dates);
+        var formattedDescription = HTMLworkDescription.replace(data,job.description);
+        var formattedWorkLocation = HTMLworkLocation.replace(data,job.location);
+        $(".work-entry:last").append(formattedEmployerTitle);      
         $(".work-entry:last").append(formattedDates);
-
-        var formattedDescription = HTMLworkDescription.replace(data, job.description);
+        $(".work-entry:last").append(formattedWorkLocation);    
         $(".work-entry:last").append(formattedDescription);
 
     });
