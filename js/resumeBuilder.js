@@ -46,12 +46,14 @@ var work = {
         "employer": "Eyemovic",
         "title": "Website operation staff",
         "dates": "August 2013 - present",
-        "description": "Design and markup customers’ websites.  In charge of updating websites(hotel, gymnastics organization etc)."
+        "description": "Design and markup customers’ websites.  In charge of updating websites(hotel, gymnastics organization etc).",
+        "location": "Matsuyama,Ehime,Japan"
     }, {
         "employer": "Terakoya group",
         "title": "Instructor",
         "dates": "2007-2012",
-        "description": "taught 6 - 18 years kids"
+        "description": "taught 6 - 18 years kids",
+        "location": "Matsuyama,Ehime,Japan"
     }]
 };
 
@@ -78,23 +80,23 @@ var education = {
     "schools": [{
         "name": "Conestoga College",
         "location": "Kitchener,ON,Canada",
-        "major": "General Business",
+        "majors": "General Business",
         "degree": "Diploma",
-        "YearofGraducation": "2007",
-        "URL": "http://www.conestogac.on.ca/index.jsp"
+        "dates": "2007",
+        "url": "http://www.conestogac.on.ca/index.jsp"
     }, {
         "name": "Japan College of Foreigh Languages",
         "location": "Tokyo,Japan",
-        "major": "Canada Study",
+        "majors": "Canada Study",
         "degree": "Diploma",
-        "YearofGraducation": "2004",
-        "URL": "http://www.jcfl.ac.jp/"
+        "dates": "2004",
+        "url": "http://www.jcfl.ac.jp/"
     }],
     "onlineCourses": [{
         "title": "front end nanodegree",
         "school": "Udacity",
         "dates": "may 2016 - present",
-        "URL": "https://www.udacity.com/"
+        "url": "https://www.udacity.com/"
     }]
 };
 
@@ -103,9 +105,9 @@ education.display = function() {
         $("#education").append(HTMLschoolStart);
         var formattedschoolName = HTMLschoolName.replace(data, school.name);
         var formattedschoolDegree = HTMLschoolDegree.replace(data, school.degree);
-        var formattedschoolDates = HTMLschoolDates.replace(data, school.YearofGraducation);
+        var formattedschoolDates = HTMLschoolDates.replace(data, school.dates);
         var formattedschoolLocation = HTMLschoolLocation.replace(data, school.location);
-        var formattedschoolMajor = HTMLschoolMajor.replace(data, school.major);
+        var formattedschoolMajor = HTMLschoolMajor.replace(data, school.majors);
         var formattedEducationTitle = formattedschoolName + formattedschoolDegree;
         $(".education-entry:last").append(formattedEducationTitle);
         $(".education-entry:last").append(formattedschoolDates);
@@ -117,7 +119,7 @@ education.display = function() {
         var formattedonlineTitle = HTMLonlineTitle.replace(data, onlineCourse.title);
         var formattedonlineSchool = HTMLonlineSchool.replace(data, onlineCourse.school);
         var formattedonlineDates = HTMLonlineDates.replace(data, onlineCourse.dates);
-        var formattedonlineURL = HTMLonlineURL.replace(data, onlineCourse.URL);
+        var formattedonlineURL = HTMLonlineURL.replace(data, onlineCourse.url);
         var formattedonlineHead = formattedonlineTitle + formattedonlineSchool;
         $(".education-entry:last").append(HTMLonlineClasses);
         $(".education-entry:last").append(formattedonlineHead);
