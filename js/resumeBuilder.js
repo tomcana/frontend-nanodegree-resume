@@ -12,8 +12,9 @@ var bio = {
     "biopic": "./images/profile_pic.jpg",
     "welcomeMessage": "welcome to my online resume!",
     "skills": ["html", "css", "Javascript", "jQuery"]
+};
 
-    display : function() {
+bio.display = function() {
     var formattedName = HTMLheaderName.replace(data, bio.name);
     var formattedRole = HTMLheaderRole.replace(data, bio.role);
     var formattedMobile = HTMLmobile.replace(data, bio.contacts.mobile);
@@ -35,7 +36,6 @@ var bio = {
             $("#skills").append(formattedSkill);
         });
     }
-};
 };
 
 bio.display();
